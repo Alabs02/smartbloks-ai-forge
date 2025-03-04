@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+/* ========== General Typography ========== */
+.swagger-ui {
+  color: #1e252b !important;
+}
+
+.swagger-ui .info h1,
+.swagger-ui .info h2,
+.swagger-ui .info h3,
+.swagger-ui .info h4,
+.swagger-ui .info h5,
+.swagger-ui .info h6 {
+  color: #fd801b !important;
+}
+.swagger-ui .opblock-summary-method {
+  color: #faf7f4 !important;
+}
+
+.swagger-ui,
+* {
+  font-family: "Geist", sans-serif !important;
+}
+
+.swagger-ui .info h1,
+.swagger-ui .info h2,
+.swagger-ui .info h3,
+.swagger-ui .info h4,
+.swagger-ui .info h5,
+.swagger-ui .info h6 {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.swagger-ui a {
+  color: #ff9a3c !important;
+  letter-spacing: 0.75px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+}
+
+.swagger-ui a:hover {
+  color: #fd801b !important;
+}
+
+.swagger-ui input,
+.swagger-ui select,
+.swagger-ui textarea {
+  border: 1px solid #fd801b !important;
+  border-radius: 5px !important;
+  padding: 8px !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  color: #1e252b !important;
+  margin-right: 8px !important;
+  background-color: #faf7f4 !important;
+}
+
+.swagger-ui input:focus,
+.swagger-ui select:focus,
+.swagger-ui textarea:focus {
+  border-color: #ff9a3c !important;
+  outline: none !important;
+  box-shadow: 0 0 5px rgba(253, 128, 27, 0.5) !important;
+}
+
+.swagger-ui .btn {
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.swagger-ui .btn:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(253, 128, 27, 0.5) !important;
+}
+
+.swagger-ui .btn.btn-done,
+.swagger-ui .btn.btn-clear {
+  color: #faf7f4 !important;
+  background: #1e252b !important;
+  margin-left: 4px !important;
+}
+
+.swagger-ui .btn.try-out__btn.cancel {
+  color: #faf7f4 !important;
+  background: #1e252b !important;
+}
+
+.swagger-ui .btn.try-out__btn.cancel:hover {
+  background: #ff9a3c !important;
+  color: #1e252b !important;
+}
+
+.swagger-ui .btn.btn-done:hover,
+.swagger-ui .btn.btn-clear:hover {
+  background: #ff9a3c !important;
+  color: #1e252b !important;
+}
+
+.swagger-ui .opblock .opblock-summary-path a span {
+  letter-spacing: 0 !important;
+  text-transform: lowercase !important;
+}
+
+.swagger-ui a:active {
+  color: #d4691b !important;
+}
+
+.swagger-ui.swagger-container {
+  background: #faf7f4 !important;
+}
+
+/* ========== Custom Topbar Gradient ========== */
+.swagger-ui .topbar {
+  background: linear-gradient(135deg, #1e252b 40%, #fd801b 100%) !important;
+  padding: 10px !important;
+}
+
+/* ========== API Response Panels ========== */
+.swagger-ui .opblock {
+  border-left: 5px solid #fd801b !important;
+  background-color: #faf7f4 !important;
+  border-radius: 6px;
+}
+
+.swagger-ui .opblock.opblock-get {
+  border-left-color: #61affe !important;
+}
+
+/* ========== Buttons & Inputs ========== */
+.swagger-ui .btn {
+  background: #fd801b !important;
+  border: none !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 5px !important;
+}
+
+.swagger-ui .btn:hover {
+  background: #ff9a3c !important;
+}
+
+.swagger-ui th {
+  background: #fd801b !important;
+  color: #faf7f4 !important;
+}
+
+/* ========== Code Blocks ========== */
+.swagger-ui pre {
+  /* background: #1e252b !important; */
+  color: #faf7f4 !important;
+  border-radius: 10px !important;
+  padding: 10px;
+}
+
+/* ========== Footer Branding ========== */
+.swagger-ui .swagger-ui-footer {
+  background: #1e252b !important;
+  color: #faf7f4 !important;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.swagger-ui section.information-container.wrapper {
+  background: #faf7f4 !important;
+}
+
+.swagger-ui .btn.authorize svg {
+  fill: #faf7f4;
+}
+
+.swagger-ui .swagger-ui-footer a {
+  color: #fd801b !important;
+}
