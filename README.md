@@ -59,13 +59,13 @@ solutions.
 ### 3️⃣ Run the Tests
 
 ```sh
- pnpm run test
+ pnpm test
 ```
 
 ### 4️⃣ Start the Service
 
 ```sh
- pnpm run dev
+ pnpm dev
 ```
 
 ## 📖 Documentation
@@ -82,9 +82,6 @@ For full API references and usage examples, check out our **Swagger UI**:
 
 We welcome contributions! Feel free to submit PRs, report issues, or suggest improvements.
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
 
 ---
 
