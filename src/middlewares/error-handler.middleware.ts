@@ -1,6 +1,5 @@
-import { ExpressErrorMiddlewareInterface, Middleware } from "routing-controllers";
+import { BadRequestError, ExpressErrorMiddlewareInterface, Middleware } from "routing-controllers";
 import { Request, Response, NextFunction } from "express";
-import { ValidationError } from "class-validator";
 import { isDevMode } from "@/utils";
 
 @Middleware({ type: "after" })
@@ -14,16 +13,7 @@ export class ErrorHandlerMiddleware implements ExpressErrorMiddlewareInterface {
 
     let statusCode = 500;
     let message = "Internal Server Error";
-
-    if (error instanceof ValidationError) {
-      statusCode = 400;
-      message = "Validation Error";
-    } else if (error.name === "UnauthorizedError") {
-      statusCode = 401;
-      message = "Unauthorized";
-    }
-
-    const errorResponse = {
+    let errorResponse: any = {
       message,
       status: statusCode,
       result: {
@@ -33,6 +23,14 @@ export class ErrorHandlerMiddleware implements ExpressErrorMiddlewareInterface {
         ...(isDevMode() && { stack: error.stack })
       }
     };
+
+    if (error instanceof BadRequestError && (error as any).errors) {
+      statusCode = 400;
+      errorResponse = { errors: (error as any).errors }; // Return expected error format
+    } else if (error.name === "UnauthorizedError") {
+      statusCode = 401;
+      message = "Unauthorized";
+    }
 
     response.status(statusCode).json(errorResponse);
   }

@@ -17,7 +17,7 @@ export class NotFoundMiddleware implements ExpressMiddlewareInterface {
       }
     };
 
-    log.fatal(`404 Route Not Found: ${request.method} ${request.url}`);
+    log.warn(`404 Route Not Found: ${request.method} ${request.url}`);
 
     response.status(404).json(error);
   }
