@@ -1,11 +1,15 @@
 import * as cheerio from "cheerio";
 import { LLMService } from "./llm.service";
+import { ImageSearchService } from "./image.service";
 import { createFinalHtmlPrompt } from "@/templates";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { ContentTransformerInput, ContentTransformerOutput } from "@/models";
 
 export class ContentTransformerService {
-  constructor(private llmService: LLMService) {}
+  constructor(
+    private llmService: LLMService,
+    private imageSearchService: ImageSearchService
+  ) {}
 
   async transformContent(input: ContentTransformerInput): Promise<ContentTransformerOutput> {
     const startTime = performance.now();
@@ -22,7 +26,6 @@ export class ContentTransformerService {
       }
 
       const htmlOptimizationChain = RunnableSequence.from([createFinalHtmlPrompt, this.llmService.htmlLLM]);
-
       const optimizedHtml = await htmlOptimizationChain.invoke({ html, siteName, keywords });
 
       if (this.llmService.wandbRun) {
@@ -31,14 +34,22 @@ export class ContentTransformerService {
         });
       }
 
-      console.log({ optimizedHtml });
-
       const $ = cheerio.load(optimizedHtml?.text);
 
-      $("img").each((_, img) => {
-        const altText = $(img).attr("alt") || "Descriptive image related to site content";
-        $(img).attr("alt", altText);
-      });
+      await Promise.all(
+        $("img").map(async (_, img) => {
+          let altText = $(img).attr("alt")?.trim() || "Descriptive image related to site content";
+          $(img).attr("alt", altText);
+
+          const imageUrl = await this.imageSearchService.fetchImageUrl(altText);
+
+          console.log({ imageUrl });
+
+          if (imageUrl) {
+            $(img).attr("src", imageUrl);
+          }
+        })
+      );
 
       const finalHtml = $.html();
       const latency = performance.now() - startTime;
@@ -52,10 +63,8 @@ export class ContentTransformerService {
         });
       }
 
-      console.log({ finalHtml });
-
       return {
-        message: "HTML successfully optimized for SEO, accessibility, and user experience.",
+        message: "HTML successfully optimized with real images, SEO, and accessibility.",
         isSuccessful: true,
         result: { html: finalHtml }
       };

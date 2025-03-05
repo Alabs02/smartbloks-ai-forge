@@ -79,7 +79,7 @@ const imageFewShotPrompt = new FewShotChatMessagePromptTemplate({
   suffix: "Site Name: {siteName}\nKeywords: {keywords}\nAlt Text: {altText}"
 });
 
-export async function createFinalImagePrompt(input: Omit<ContentTransformerInput, 'html'> & { altText?: string }) {
+export async function createFinalImagePrompt(input: Omit<ContentTransformerInput, "html"> & { altText?: string }): Promise<string> {
   const { altText, siteName, keywords } = input;
   const finalPrompt = ChatPromptTemplate.fromMessages([
     [
@@ -89,8 +89,7 @@ export async function createFinalImagePrompt(input: Omit<ContentTransformerInput
     ...(await imageFewShotPrompt.formatMessages({
       siteName,
       keywords,
-    altText: altText || "A sample AI-generated image concept."
-
+      altText: altText || "A sample AI-generated image concept."
     })),
     ["human", "Site Name: {siteName}\nKeywords: {keywords}\nAlt Text: {altText}"]
   ]);
@@ -101,5 +100,13 @@ export async function createFinalImagePrompt(input: Omit<ContentTransformerInput
     altText: altText || "A sample AI-generated image concept."
   });
 
-  console.log(formattedPrompt);
+  return formattedPrompt;
 }
+
+export const imageGenerationPrompt = ChatPromptTemplate.fromMessages([
+  [
+    "system",
+    "You are an AI assistant that retrieves high-quality, relevant images from Dribbble, Behance, or Google. Based on the provided image description, you will find a visually appropriate image and return only its direct URL. Your response must be a valid, accessible image URL with no additional text."
+  ],
+  ["human", `{imagePrompt}`]
+]);
