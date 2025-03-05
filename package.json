@@ -9,6 +9,7 @@
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
+    "build": "tsc",
     "test": "jest --config jest.config.ts --detectOpenHandles --coverage --maxWorkers=1"
   },
   "lint-staged": {
