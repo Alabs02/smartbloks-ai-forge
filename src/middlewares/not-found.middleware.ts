@@ -5,7 +5,7 @@ import { Middleware, ExpressMiddlewareInterface } from "routing-controllers";
 export class NotFoundMiddleware implements ExpressMiddlewareInterface {
   use(request: Request, response: Response, next: NextFunction): void {
     if (response.headersSent) {
-      return next();
+      return;
     }
 
     const error = {

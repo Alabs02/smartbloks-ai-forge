@@ -8,8 +8,8 @@
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
-    "test": "jest --config jest.config.ts --detectOpenHandles --coverage --maxWorkers=1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --config jest.config.ts --detectOpenHandles --coverage --maxWorkers=1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,md}": "prettier --write"

@@ -3,8 +3,11 @@ import type { Config } from "jest";
 const config: Config = {
   preset: "ts-jest",
   testEnvironment: "node",
-  roots: ["<rootDir>/test"],
-  setupFiles: ["<rootDir>/src/log/index.ts"]
+  roots: ["<rootDir>/src/test"],
+  moduleDirectories: ["node_modules", "src"],
+  moduleNameMapper: {
+    "@/(.*)": "<rootDir>/src/$1"
+  }
 };
 
 export default config;

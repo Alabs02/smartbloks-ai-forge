@@ -13,7 +13,7 @@ import { CorsMiddleware, ErrorHandlerMiddleware, LoggingMiddleware, NotFoundMidd
 
 config();
 
-const app = createExpressServer({
+export const app = createExpressServer({
   routePrefix: `/api/${SERVER.SERVICE_VERSION}`,
   development: isDevMode(),
   defaultErrorHandler: false,
