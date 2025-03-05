@@ -133,6 +133,10 @@
   border-left-color: #61affe !important;
 }
 
+.swagger-ui .opblock.opblock-post {
+  border-left-color: #49cc90 !important;
+}
+
 /* ========== Buttons & Inputs ========== */
 .swagger-ui .btn {
   background: #fd801b !important;

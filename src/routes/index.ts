@@ -7,5 +7,9 @@ export const ROUTES = {
     BASE: "/token-manager",
     AUTHENTICATE: "/authenticate",
     REFRESH_TOKEN: "/refresh-token"
+  },
+  CONTENT_TRANSFORMER: {
+    BASE: "/content",
+    TRANSFORM: "/transform"
   }
 };

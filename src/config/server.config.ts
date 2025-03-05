@@ -9,6 +9,12 @@ const HOSTNAME = process.env.SERVER_HOSTNAME || "localhost";
 const SERVICE_VERSION = process.env.SERVICE_VERSION || "v1";
 const PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 8000;
 
+const WANDB_API_KEY = process.env.WANDB_API_KEY || "";
+const LS_TOKEN = process.env.LS_TOKEN || "";
+const MISTRAL_TOKEN = process.env.MISTRAL_API_KEY || "";
+
+const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY || "";
+
 const DOCS_URL = `${getProtocol()}://${HOSTNAME}:${PORT}/docs/${SERVICE_VERSION}`;
 const BASE_URL = `${getProtocol()}://${HOSTNAME}:${PORT}/api/${SERVICE_VERSION}`;
 
@@ -17,6 +23,13 @@ export const SERVER = {
   HOSTNAME,
   DOCS_URL,
   BASE_URL,
+
+  LS_TOKEN,
+  WANDB_API_KEY,
+  MISTRAL_TOKEN,
+
+  UNSPLASH_ACCESS_KEY,
+
   SERVICE_NAME,
   SERVICE_VERSION,
   SERVICE_DESCRIPTION

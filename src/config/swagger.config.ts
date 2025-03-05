@@ -3,14 +3,14 @@ import { routingControllersToSpec } from "routing-controllers-openapi";
 import { SERVER } from "./server.config";
 import { isDevMode } from "@/utils";
 import { SwaggerUiOptions } from "swagger-ui-express";
-import { BaseController, TokenManagerController } from "@/controllers";
+import { BaseController, ContentTransformerController, TokenManagerController } from "@/controllers";
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
 
 const generateSwaggerSpec = (version: string) => {
   return routingControllersToSpec(
     getMetadataArgsStorage(),
     {
-      controllers: [BaseController, TokenManagerController]
+      controllers: [BaseController, TokenManagerController, ContentTransformerController]
     },
     {
       openapi: "3.0.0",

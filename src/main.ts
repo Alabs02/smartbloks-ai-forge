@@ -5,11 +5,11 @@ import { config } from "dotenv";
 import { isDevMode } from "@/utils";
 import { createServer } from "http";
 import swaggerUI from "swagger-ui-express";
-import { createExpressServer } from "routing-controllers";
 import { SERVER, swaggerConfig, swaggerSpecs } from "@/config";
 import express, { Request, Response, NextFunction } from "express";
-import { BaseController, TokenManagerController } from "@/controllers";
-import { CorsMiddleware, ErrorHandlerMiddleware, LoggingMiddleware, NotFoundMiddleware } from "@/middlewares";
+import { createExpressServer } from "routing-controllers";
+import { BaseController, TokenManagerController, ContentTransformerController } from "@/controllers";
+import { CorsMiddleware, ErrorHandlerMiddleware, LoggingMiddleware, NotFoundMiddleware, RateLimitMiddleware } from "@/middlewares";
 
 config();
 
@@ -17,8 +17,9 @@ export const app = createExpressServer({
   routePrefix: `/api/${SERVER.SERVICE_VERSION}`,
   development: isDevMode(),
   defaultErrorHandler: false,
-  controllers: [BaseController, TokenManagerController],
-  middlewares: [CorsMiddleware, LoggingMiddleware, NotFoundMiddleware]
+  validation: true,
+  controllers: [BaseController, TokenManagerController, ContentTransformerController],
+  middlewares: [CorsMiddleware, LoggingMiddleware, RateLimitMiddleware, NotFoundMiddleware]
 });
 
 app.use(express.urlencoded({ extended: true }));
