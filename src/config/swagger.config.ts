@@ -33,7 +33,7 @@ const generateSwaggerSpec = (version: string) => {
           ]
         : [
             {
-              url: `https://${SERVER.HOSTNAME}/api/${version}`,
+              url: `https://smartbloks-ai-forge.up.railway.app/api/${version}`,
               description: `Production Server - ${version}`
             }
           ],
