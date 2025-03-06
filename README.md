@@ -65,7 +65,7 @@ solutions.
 ### 4️⃣ Start the Service
 
 ```sh
- pnpm dev
+ pnpm start:dev
 ```
 
 ## 📖 Documentation
